@@ -9,7 +9,7 @@ spi0 = spidev.SpiDev()
 spi0.open(0,0)
 spi0.max_speed_hz = 122000
 # CPOL=1, CPHA=0
-spi.mode = 0b01
+spi0.mode = 0b01
 
 MSB = 0x00
 # bit7: Active-low LNA Gain Reduction (OFF)
