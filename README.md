@@ -7,13 +7,13 @@ Controlling BGT24MTR11 with RaspberryPi and Python script.
 sudo raspi-config
 ```
 2. Select "Interface options" and enable SPI interface.
-3. Load kernel module from terminal>
+3. Load kernel module:
 ```
 sudo modprobe spi-2835
 ```
 4. Install _spidev_ Python module:
 ```
-sudo apt isntall python/dev python3/dev
+sudo apt install python/dev python3/dev
 ```
 ```
 cd ~
