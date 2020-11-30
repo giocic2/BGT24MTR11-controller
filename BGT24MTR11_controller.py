@@ -8,6 +8,8 @@ spi0 = spidev.SpiDev()
 # Use of /dev/spidev0.0, SPI0 with CE0=HIGH
 spi0.open(0,0)
 spi0.max_speed_hz = 122000
+# CPOL=1, CPHA=0
+spi.mode = 0b01
 
 MSB = 0x00
 # bit7: Active-low LNA Gain Reduction (OFF)
@@ -32,3 +34,4 @@ LSB = 0x08
 # TW output power reduction factors: 0, 0.4, 0.8, 1.4, 2.5, 4, 6, 9
 
 spi0.xfer([MSB,LSB])
+spi0.close()
