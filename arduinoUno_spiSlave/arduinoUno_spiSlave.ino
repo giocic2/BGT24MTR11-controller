@@ -1,53 +1,63 @@
-#include "pins_arduino.h"
+#include <SPI.h>
+#define BYTES_TOT 1
 
-char buf [100];
-volatile byte pos;
-volatile boolean process_it;
+/* Arbitrary slave message. */
+/*
+byte slaveMessage[BYTES_TOT] = {
+  B10000000,
+  B11000000
+};
+*/
+byte slaveMessage = B10000000;
 
-void setup (void)
-{
- Serial.begin (9600);   // debugging
+/*
+byte receivedMessage[BYTES_TOT];
+*/
+byte receivedMessage;
+int index = 0;
 
- // have to send on master in, *slave out*
- pinMode(MISO, OUTPUT);
- 
- // turn on SPI in slave mode
- SPCR |= _BV(SPE);
- 
- // turn on interrupts
- SPCR |= _BV(SPIE);
- 
- pos = 0;
- process_it = false;
-}  // end of setup
+void setup(){
+  Serial.begin(9600);
+  
+  SPI.begin(SPI_SLAVE);
+  SPI.setDataMode(SPI_MODE1);
 
+  /* Print slave message */
+  Serial.print(slaveMessage,BIN);
+  /*
+  while(index<BYTES_TOT){
+    Serial.print(slaveMessage[BYTES_TOT-1-index], BIN);
+    index++;
+    }
+  index=0;
+  */
 
-// SPI interrupt routine
-ISR (SPI_STC_vect)
-{
-byte c = SPDR;
- 
- // add to buffer if room
- if (pos < sizeof buf)
-   {
-   buf [pos++] = c;
-   
-   // example: newline means time to process buffer
-   if (c == '\n')
-     process_it = true;
-     
-   }  // end of room available
+  /* Message exchange */
+  SPI.attachInterrupt(messageExchange);
+
+  /* Print received message */
+  Serial.print(receivedMessage);
+  /*
+  while(index<BYTES_TOT){
+    Serial.print(receivedMessage[BYTES_TOT-1-index], BIN);
+    index++;
+    }
+  */
 }
 
-// main loop - wait for flag set in interrupt routine
-void loop (void)
-{
- if (process_it)
-   {
-   buf [pos] = 0;  
-   Serial.println (buf);
-   pos = 0;
-   process_it = false;
-   }  // end of flag set
-   
-}  // end of loop
+void loop(){
+
+}
+
+/*
+void messageExchange(){
+  while(index<BYTES_TOT){
+    receivedMessage[BYTES_TOT-1-index]=SPI.transfer(slaveMessage[BYTES_TOT-1-index]);
+    index++;
+  }
+  index=0;
+}
+*/
+void messageExchange(){
+  receivedMessage=SPI.transfer(slaveMessage);
+}

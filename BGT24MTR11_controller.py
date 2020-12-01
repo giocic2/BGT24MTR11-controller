@@ -8,7 +8,7 @@ spi0 = spidev.SpiDev()
 # Use of /dev/spidev0.0, SPI0 with CE0=HIGH
 spi0.open(0,0)
 spi0.max_speed_hz = 122000
-# CPOL=1, CPHA=0
+# CPOL=0, CPHA=1
 spi0.mode = 0b01
 
 MSB = 0x00
