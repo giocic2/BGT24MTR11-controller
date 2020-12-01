@@ -1,3 +1,7 @@
+/*
+ * Library needed: https://github.com/javifercep/SPI-Slave.git
+ */
+
 #include <SPI.h>
 #define BYTES_TOT 1
 
