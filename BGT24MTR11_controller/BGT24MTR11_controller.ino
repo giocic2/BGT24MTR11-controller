@@ -5,9 +5,9 @@ const int val = 127; // PWM amplitude, 26 equals to 55 mV
 const int button = 30;
 
 // SPI PinOut and Transmitted 16-bit Word
-const int cs = 53;    //chip select
-const int clk = 52;   //clock
-const int so = 51;    //serial out
+const int cs = 10;    //chip select
+const int clk = 12;   //clock
+const int so = 11;    //serial out
 
 const byte MSB = B00000000;     //LNA Gain Red off -          Not Used       -         Not Used       - disable TX pwr on -        AMUX2 0     -   Test Bit  -   Test Bit  -   AMUX1 0
 const byte LSB = B00001000;     //    AMUX0 0      - disable 64k divider off - disable 16 divider off - Hi LO buffer off  - High TX buffer off - TW pwr red2 - TW pwr red1 - TW pwr red0
