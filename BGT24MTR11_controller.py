@@ -31,7 +31,7 @@ LSB = 0x08
 # bit2: TW power reduction bit2
 # bit1: TW power reduction bit1
 # bit0: TW power reduction bit0
-# TW output power reduction factors: 0, 0.4, 0.8, 1.4, 2.5, 4, 6, 9
+# TW output power reduction factors [dB] : 0, 0.4, 0.8, 1.4, 2.5, 4, 6, 9
 
 spi0.xfer([MSB,LSB])
 spi0.close()
