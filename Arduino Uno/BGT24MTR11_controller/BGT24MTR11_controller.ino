@@ -1,7 +1,7 @@
 #include <SPI.h>
 
 // SPI PinOut and Transmitted 16-bit Word
-const int chipSelectPin = 10;    //chip select
+const int chipSelectNegPin = 10;    //chip select
 const int clockPin = 13;   //clock
 const int serialOutPin = 11;    //serial out
 
@@ -24,7 +24,7 @@ const byte communication_LSB = B00001000;
 
 void setup() {
 
-  pinMode(chipSelectPin,OUTPUT);
+  pinMode(chipSelectNegPin,OUTPUT);
   pinMode(clockPin,OUTPUT);
   pinMode(serialOutPin,OUTPUT);
 
@@ -33,14 +33,14 @@ void setup() {
   // Serial.println("SPI communication started...");
   SPI.beginTransaction(SPISettings(125000,MSBFIRST,SPI_MODE0)); // min. 125kHz; strange signals on clockPin line due to this line.
   delay(1000);
-  digitalWrite(chipSelectPin,HIGH);
+  digitalWrite(chipSelectNegPin,HIGH);
   delay(0.2);
-  digitalWrite(chipSelectPin,LOW);
+  digitalWrite(chipSelectNegPin,LOW);
   delay(0.2);
   SPI.transfer(communication_MSB);
   SPI.transfer(communication_LSB);
   delay(0.2);
-  digitalWrite(chipSelectPin,HIGH);
+  digitalWrite(chipSelectNegPin,HIGH);
   delay(0.2);
   SPI.endTransaction();
   Serial.println("SPI communication ended.");
