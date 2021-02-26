@@ -43,7 +43,7 @@ void setup() {
   digitalWrite(chipSelectNegPin,HIGH);
   delay(0.2);
   SPI.endTransaction();
-  Serial.println("SPI communication ended.");
+  // Serial.println("SPI communication ended.");
 
   }
 
