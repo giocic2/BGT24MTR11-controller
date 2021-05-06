@@ -11,7 +11,7 @@ spi0.max_speed_hz = 122000
 # CPOL=0, CPHA=1
 spi0.mode = 0b01
 
-MSB = 0x00
+MSB = 0b00000000
 # bit7: Active-low LNA Gain Reduction (OFF)
 # bit6: Not Used
 # bit5: Not Used
@@ -22,7 +22,8 @@ MSB = 0x00
 # bit1: Test bit, must be lOW (0)
 # bit0: Analog multiplexer control bit "AMUX1" (0)
 
-LSB = 0x08
+LSB = 0b00001000 # TX full power
+
 # bit7: Analog multiplexer control bit "AMUX0" (0)
 # bit6: Active-low 64k divider (ON)
 # bit5: Active-low 16 divider (ON)
