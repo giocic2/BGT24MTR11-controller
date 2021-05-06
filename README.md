@@ -43,6 +43,7 @@ chmod +x ./BGT24MTR11-controller/Raspberry/BGT24MTR11_controller.py
 ```
 ### 4. (Optional) Update repository discarding local changes, and make the Python script executable again
 ```
+git add --all
 git reset --hard
 git pull
 chmod +x /Raspberry/BGT24MTR11-controller.py
