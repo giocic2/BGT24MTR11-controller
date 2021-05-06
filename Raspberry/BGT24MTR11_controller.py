@@ -3,7 +3,14 @@
 
 import spidev
 import time
+from gpiozero import OutputDevice
 
+chipSelectNeg = OutputDevice('BOARD3')
+chipSelectNeg.active_high = False
+chipSelectNeg.off()
+
+# Enable BGT24MTR11 for SPI programming
+chipSelectNeg.on()
 spi0 = spidev.SpiDev()
 # Use of /dev/spidev0.0, SPI0 with CE0=HIGH
 spi0.open(0,0)
@@ -23,6 +30,9 @@ MSB = 0b00000000
 # bit0: Analog multiplexer control bit "AMUX1" (0)
 
 LSB = 0b00001000 # TX full power
+# LSB = 0b00001101 # TX power reduced of 4dB
+# LSB = 0b00001110 # TX power reduced of 6dB
+# LSB = 0b00001111 # TX power reduced of 9dB
 
 # bit7: Analog multiplexer control bit "AMUX0" (0)
 # bit6: Active-low 64k divider (ON)
@@ -36,3 +46,5 @@ LSB = 0b00001000 # TX full power
 
 spi0.xfer([MSB,LSB])
 spi0.close()
+# Disable BGT24MTR11 after successfull programming
+chipSelectNeg.off()

@@ -36,12 +36,14 @@ From terminal:
 ```
 git clone https://github.com/giocic2/BGT24MTR11-controller.git
 ```
-### 3. Execute the script
+### 3. Execute the script, after made it executable
 ```
-./BGT24MTR11_controller/Raspberry/BGT24MTR11_controller.py
+chmod +x ./BGT24MTR11-controller/Raspberry/BGT24MTR11_controller.py
+./BGT24MTR11-controller/Raspberry/BGT24MTR11-controller.py
 ```
-### 4. (Optional) Update repository discarding local changes
+### 4. (Optional) Update repository discarding local changes, and make the Python script executable again
 ```
 git reset --hard
 git pull
+chmod +x /Raspberry/BGT24MTR11-controller.py
 ```
