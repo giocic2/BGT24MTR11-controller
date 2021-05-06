@@ -37,7 +37,7 @@ From terminal:
 git clone https://github.com/giocic2/BGT24MTR11-controller.git
 ```
 ```
-cd BGT24MTR11-controller/
+cd BGT24MTR11-controller/Raspberry
 ```
 ```
 chmod +x BGT24MTR11_controller.py
@@ -47,4 +47,11 @@ chmod +x BGT24MTR11_controller.py
 sudo ./BGT24MTR11_controller.py
 ```
 ### 4. Sync with future updates of this repository
-Execute the shell script update_BGT24MTR11repository.sh. It discards all local changes, pulls the code, and make the script executable.
+If first time, make the update script executable:
+```
+chmod +x update_BGT24MTR11repository.sh
+```
+Execute the shell script. It discards all local changes, pulls the code from GitHub, and make the Python script executable.
+```
+./update_BGT24MTR11repository.sh
+```
