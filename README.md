@@ -42,8 +42,9 @@ cd BGT24MTR11-controller/
 ```
 chmod +x BGT24MTR11_controller.py
 ```
-
-To execute:
+### 3. Execute the script
 ```
 sudo ./BGT24MTR11_controller.py
 ```
+### 4. Sync with future updates of this repository
+Execute the shell script update_BGT24MTR11repository.sh. It discards all local changes, pulls the code, and make the script executable.
