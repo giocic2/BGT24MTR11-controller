@@ -34,7 +34,7 @@ sudo make install
 ### 2. Clone this repository and make the controller software executable
 From terminal:
 ```
-git clone https://github.com/giocic2/BGT24MTR11/controller.github
+git clone https://github.com/giocic2/BGT24MTR11-controller.git
 ```
 ```
 cd BGT24MTR11-controller/
