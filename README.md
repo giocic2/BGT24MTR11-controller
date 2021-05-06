@@ -31,27 +31,17 @@ make
 sudo make install
 ```
 
-### 2. Clone this repository and make the controller software executable
+### 2. Clone this repository
 From terminal:
 ```
 git clone https://github.com/giocic2/BGT24MTR11-controller.git
 ```
-```
-cd BGT24MTR11-controller/Raspberry
-```
-```
-chmod +x BGT24MTR11_controller.py
-```
 ### 3. Execute the script
 ```
-sudo ./BGT24MTR11_controller.py
+./BGT24MTR11_controller/Raspberry/BGT24MTR11_controller.py
 ```
-### 4. Sync with future updates of this repository
-If first time, make the update script executable:
+### 4. (Optional) Update repository discarding local changes
 ```
-chmod +x update_BGT24MTR11repository.sh
-```
-Execute the shell script. It discards all local changes, pulls the code from GitHub, and make the Python script executable.
-```
-./update_BGT24MTR11repository.sh
+git reset --hard
+git pull
 ```
