@@ -1,5 +1,5 @@
 # BGT24MTR11-controller
-Controlling BGT24MTR11 with RaspberryPi and Python script.
+BGT24MTR11 programming with RaspberryPi (Python) or Arduino.
 ## Configure your Raspberry Pi from terminal
 ### 1. Enable SPI interface
 1. From Raspberry Pi terminal:
