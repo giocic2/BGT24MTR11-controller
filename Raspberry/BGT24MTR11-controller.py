@@ -9,10 +9,11 @@ chipSelectNeg = OutputDevice('BOARD3')
 chipSelectNeg.active_high = False
 chipSelectNeg.off()
 
-# Enable BGT24MTR11 for SPI programming
-chipSelectNeg.on()
+
 spi0 = spidev.SpiDev()
-# Use of /dev/spidev0.0, SPI0 with CE0=HIGH
+# Use of /dev/spidev0.0, SPI0 with CE0 not used.
+# SCLK: BOARD23
+# MOSI: BOARD19
 spi0.open(0,0)
 spi0.max_speed_hz = 122000
 # CPOL=0, CPHA=1
@@ -44,7 +45,14 @@ LSB = 0b00001000 # TX full power
 # bit0: TW power reduction bit0
 # TW output power reduction factors [dB] : 0, 0.4, 0.8, 1.4, 2.5, 4, 6, 9
 
+print('SPI communication started...')
+# Enable BGT24MTR11 for SPI programming
+chipSelectNeg.on()
+time.sleep(1e-4)
 spi0.xfer([MSB,LSB])
+
 spi0.close()
+time.sleep(1e-4)
 # Disable BGT24MTR11 after successfull programming
 chipSelectNeg.off()
+print('SPI communication ended.')
